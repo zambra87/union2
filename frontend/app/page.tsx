@@ -185,7 +185,7 @@ export default async function Home() {
         <a
           href="https://www.unionchurch.cl/rema"
           target="_blank"
-          className="w-[140px] h-[140px] flex items-center justify-center"
+          className="w-[140px] h-[140px] flex items-center justify-center md:col-start-2 lg:col-start-auto"
         >
           <Image
             alt="rema"
