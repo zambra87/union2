@@ -1,0 +1,21 @@
+{
+  "name": "keystone-app",
+  "version": "3.0.2",
+  "private": true,
+  "scripts": {
+    "dev": "keystone dev",
+    "start": "keystone start",
+    "build": "keystone build && keystone prisma migrate deploy"
+  },
+  "dependencies": {
+    "@keystone-6/auth": "^7.0.2",
+    "@keystone-6/core": "^5.7.2",
+    "@prisma/client": "^5.12.1"
+  },
+  "devDependencies": {
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.5",
+    "prisma": "^5.12.1",
+    "typescript": "^4.9.5"
+  }
+}

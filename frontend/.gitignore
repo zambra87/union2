@@ -1,0 +1,5 @@
+
+# Sentry
+.sentryclirc
+.env
+.env.local
