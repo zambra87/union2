@@ -1,11 +1,8 @@
-import Image from 'next/image';
 import { Adn, Vision } from '../components/shapes';
 import { Heart } from '../components/icons';
 import { Header } from '../components';
 import { promises as fs } from 'fs';
 import path from 'path';
-
-import ZoomImage from '@/public/images/zoom.png';
 
 async function getData() {
   try {
@@ -47,44 +44,50 @@ export default async function About() {
   return (
     <>
       <Header variant="black" />
-      <div className="bg-pink pt-20">
-        <div className="container mx-auto flex flex-col md:flex-row pb-16 md:pb-24">
-          <div className="w-full md:w-1/2 text-center md:text-left mb-16 md:mb-0">
-            <p className="font-serif text-4xl lg:text-5xl text-gray-800 md:text-left mb-20">
+      <div className="bg-pink">
+        <div className="relative h-[380px] md:h-[520px] overflow-hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed grayscale"
+            style={{ backgroundImage: "url('/images/nosotros-hero-bw.png')" }}
+          />
+          <div className="absolute inset-0 flex items-center justify-center bg-black/25">
+            <p className="font-serif text-4xl lg:text-5xl text-white text-center">
               Nosotros
             </p>
-            <div className="mb-16">
-              <Adn className="mb-8 mx-auto md:mx-0" />
-              <p className="text-xl text-gray-800 font-medium mb-4">Misión</p>
-              <p className="text-lg text-gray-600">
-                Conocer, llegar a ser, e impactar como Jesús
-              </p>
-            </div>
-            <div className="mb-24">
-              <Vision className="mb-8 mx-auto md:mx-0" />
-              <p className="text-xl text-gray-800 font-medium mb-4">Visión</p>
-              <p className="text-lg text-gray-600">
-                Transformar la ciudad, influenciar al mundo, ayudar a las
-                personas a conocer, amar y compartir a Jesús.
-              </p>
-            </div>
-            <a
-              href="/recursos/confesion.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="tracking-wider uppercase text-sm inline px-8 py-3 font-bold bg-black hover:bg-gray-900 text-white transition duration-150 ease-in-out"
-            >
-              Confesión y valores
-            </a>
           </div>
-          <div className="w-full md:w-1/2">
-            <Image
-              src={ZoomImage}
-              alt="Zoom"
-              height={534}
-              width={641}
-              placeholder="blur"
-            />
+        </div>
+
+        <div className="relative z-10 bg-pink -mt-10 md:-mt-16 pt-10 md:pt-16">
+          <div className="container mx-auto pb-16 md:pb-24 px-8 md:px-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 text-center md:text-left">
+              <div>
+                <Adn className="mb-8 mx-auto md:mx-0" />
+                <p className="text-xl text-gray-800 font-medium mb-4">Misión</p>
+                <p className="text-lg text-gray-600">
+                  Conocer, llegar a ser, e impactar como Jesús
+                </p>
+              </div>
+
+              <div>
+                <Vision className="mb-8 mx-auto md:mx-0" />
+                <p className="text-xl text-gray-800 font-medium mb-4">Visión</p>
+                <p className="text-lg text-gray-600">
+                  Transformar la ciudad, influenciar al mundo, ayudar a las
+                  personas a conocer, amar y compartir a Jesús.
+                </p>
+              </div>
+            </div>
+
+            <div className="text-center">
+              <a
+                href="/recursos/confesion.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="tracking-wider uppercase text-sm inline px-8 py-3 font-bold bg-black hover:bg-gray-900 text-white transition duration-150 ease-in-out"
+              >
+                Confesión y valores
+              </a>
+            </div>
           </div>
         </div>
       </div>
