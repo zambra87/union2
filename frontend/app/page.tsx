@@ -66,8 +66,7 @@ export default async function Home() {
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 justify-items-center">
         <a
-          href="https://www.unionchurch.cl/kids"
-          target="_blank"
+          href="/kids"
           className="w-[140px] h-[140px] flex items-center justify-center"
         >
           <Image

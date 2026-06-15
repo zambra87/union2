@@ -3,9 +3,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useLive } from '@/app/contexts/LiveContext';
 import { Sensor } from './icons';
+import { MinisteriosMenu } from './MinisteriosMenu';
 
 type HeaderProps = {
-  variant?: 'white' | 'black';
+  variant?: 'white' | 'black' | 'light';
 };
 
 export function Header({ variant = 'white' }: HeaderProps) {
@@ -14,17 +15,22 @@ export function Header({ variant = 'white' }: HeaderProps) {
   const headerClass =
     variant === 'white'
       ? 'bg-gradient-to-b from-gray-900 filter to-transparent w-full py-4 md:py-10 absolute top-0 '
-      : 'bg-pink w-full py-4 md:py-10';
+      : variant === 'light'
+        ? 'bg-white w-full py-4 md:py-10 border-b border-gray-900/10'
+        : 'bg-pink w-full py-4 md:py-10';
 
   const linkClass =
     variant === 'white'
       ? 'gap-1 flex flex-col md:flex-row items-center text-white text-md md:text-lg border-transparent border-b-4 md:hover:border-white'
       : 'gap-1 flex flex-col md:flex-row items-center text-black text-md md:text-lg border-transparent border-b-4 md:hover:border-black';
 
-  const logoClass = variant === 'white' ? '/logo-white.svg' : '/logo-black.svg';
+  const logoClass =
+    variant === 'white' ? '/logo-white.svg' : '/logo-black.svg';
 
   const borderColor =
     variant === 'white' ? 'border-gray-100/[0.3]' : 'border-gray-900/[0.1]';
+
+  const menuVariant = variant === 'white' ? 'white' : 'black';
 
   return (
     <div className={headerClass} style={{ zIndex: 1 }}>
@@ -73,6 +79,7 @@ export function Header({ variant = 'white' }: HeaderProps) {
             </svg>
             <span>Nosotros</span>
           </Link>
+          <MinisteriosMenu linkClass={linkClass} variant={menuVariant} />
           <Link href="/dar" className={linkClass}>
             <svg
               width="100%"

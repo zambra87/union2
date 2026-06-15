@@ -1,0 +1,45 @@
+{
+  "eyebrow": "MINISTERIOS",
+  "title": "Union Kids",
+  "intro": "Niños de 3 a 12 años.",
+  "heroImage": "/images/kids/hero.jpg",
+  "cta": {
+    "title": "Audiciones abiertas",
+    "subtitle": "Periodo de postulación hasta 19 de enero",
+    "buttonLabel": "SOLICITAR UNIRSE",
+    "buttonHref": "#"
+  },
+  "description": {
+    "title": "Descripción",
+    "paragraphs": [
+      "Union Kids es el ministerio de Union Church dirigido a los más pequeños, de 3 a 12 años, que se reúne cada domingo a las 11:30 AM. Cuenta con un grupo de maestros y colaboradores para atender todas las edades. Union Kids está enfocado en acompañar a los más pequeños en sus primeros pasos en la fe y colaborar junto a los padres en esta formación. A través de enseñanzas bíblicas, adoración, juegos y actividades, buscamos que cada niño pueda conocer a Jesús de manera cercana y significativa. Nuestro equipo crea un ambiente seguro, alegre y formativo, donde los niños aprenden sobre el amor de Dios y desarrollan una relación personal con Él desde temprana edad. Creemos que la infancia es una etapa clave para sembrar valores y verdades que marcarán toda su vida. ¿Tienes niños? Te invitamos a ser parte de Union Kids y crecer juntos en familia."
+    ]
+  },
+  "sidebar": {
+    "schedule": {
+      "label": "Horario",
+      "value": "Domingos 11:30 AM."
+    },
+    "location": {
+      "label": "Texto Bíblico",
+      "value": "Instruye al niño en su camino, Y aun cuando fuere viejo no se apartará de él. Proverbios 22:6"
+    },
+    "leaders": {
+      "label": "Encargados",
+      "people": [
+        {
+          "name": "Mabel Rivas",
+          "image": "/images/kids/leader.jpg"
+        },
+        {
+          "name": "Karen Hernandez",
+          "image": "/images/kids/leader.jpg"
+        },
+        {
+          "name": "Pamela Henriquez",
+          "image": "/images/kids/leader.jpg"
+        }
+      ]
+    }
+  }
+}
