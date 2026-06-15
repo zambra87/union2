@@ -24,8 +24,7 @@ export function Header({ variant = 'white' }: HeaderProps) {
       ? 'gap-1 flex flex-col md:flex-row items-center text-white text-md md:text-lg border-transparent border-b-4 md:hover:border-white'
       : 'gap-1 flex flex-col md:flex-row items-center text-black text-md md:text-lg border-transparent border-b-4 md:hover:border-black';
 
-  const logoClass =
-    variant === 'white' ? '/logo-white.svg' : '/logo-black.svg';
+  const logoClass = variant === 'white' ? '/logo-white.svg' : '/logo-black.svg';
 
   const borderColor =
     variant === 'white' ? 'border-gray-100/[0.3]' : 'border-gray-900/[0.1]';

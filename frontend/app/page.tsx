@@ -65,7 +65,7 @@ export default async function Home() {
       </p>
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 justify-items-center">
-        <a
+        <Link
           href="/kids"
           className="w-[140px] h-[140px] flex items-center justify-center"
         >
@@ -75,7 +75,7 @@ export default async function Home() {
             className="grayscale hover:grayscale-0 object-contain"
             placeholder="blur"
           />
-        </a>
+        </Link>
 
         <a
           href="https://www.unionchurch.cl/leones"

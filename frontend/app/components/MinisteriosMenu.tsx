@@ -30,9 +30,7 @@ export function MinisteriosMenu({ linkClass, variant }: MinisteriosMenuProps) {
       : 'bg-white text-gray-900 border-gray-200 shadow-lg';
 
   const itemClass =
-    variant === 'white'
-      ? 'hover:bg-white/10'
-      : 'hover:bg-gray-100';
+    variant === 'white' ? 'hover:bg-white/10' : 'hover:bg-gray-100';
 
   return (
     <div ref={menuRef} className="relative">
