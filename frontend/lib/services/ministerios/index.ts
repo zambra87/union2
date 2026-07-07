@@ -164,41 +164,41 @@ export function mapMinisterioToMinistryData(
   };
 }
 
-async function fetchMinisterios(where: Record<string, unknown>) {
+async function fetchMinisterios(
+  where: Record<string, unknown>
+): Promise<MinisterioRecord[]> {
   const apolloClient = initializeApollo(null);
 
-  const { data } = await apolloClient.query<{
-    ministerios: MinisterioRecord[];
-  }>({
+  const { data } = (await apolloClient.query({
     query: GET_MINISTERIOS,
     variables: { where },
-  });
+  })) as { data?: { ministerios: MinisterioRecord[] } };
 
   return data?.ministerios ?? [];
 }
 
-export async function getMenuMinisterios() {
+export async function getMenuMinisterios(): Promise<MinisterioRecord[]> {
   return fetchMinisterios({ showInMenu: { equals: true } });
 }
 
-export async function getHomepageMinisterios() {
+export async function getHomepageMinisterios(): Promise<MinisterioRecord[]> {
   return fetchMinisterios({ showOnHomepage: { equals: true } });
 }
 
-export async function getMinisterioBySlug(slug: string) {
+export async function getMinisterioBySlug(
+  slug: string
+): Promise<MinisterioRecord | null> {
   const apolloClient = initializeApollo(null);
 
-  const { data } = await apolloClient.query<{
-    ministerio: MinisterioRecord | null;
-  }>({
+  const { data } = (await apolloClient.query({
     query: GET_MINISTERIO_BY_SLUG,
     variables: { slug },
-  });
+  })) as { data?: { ministerio: MinisterioRecord | null } };
 
   return data?.ministerio ?? null;
 }
 
-export async function getMinisterioSlugs() {
+export async function getMinisterioSlugs(): Promise<string[]> {
   const ministerios = await fetchMinisterios({});
   return ministerios.map((ministerio) => ministerio.slug);
 }

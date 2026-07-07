@@ -4,6 +4,7 @@ import {
   getHomepageMinisterios,
   getMinisterioHref,
   getMinisterioLogoUrl,
+  type MinisterioSummary,
 } from '@/lib/services/ministerios';
 
 export async function MinisteriosGrid() {
@@ -15,7 +16,7 @@ export async function MinisteriosGrid() {
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 justify-items-center">
-      {ministerios.map((ministerio) => {
+      {ministerios.map((ministerio: MinisterioSummary) => {
         const href = getMinisterioHref(ministerio);
         const isExternal = href.startsWith('http');
         const logoUrl = getMinisterioLogoUrl(ministerio);
