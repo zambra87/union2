@@ -5,15 +5,39 @@ import { onError } from '@apollo/client/link/error';
 
 // SOURCE : https://www.apollographql.com/blog/apollo-client/next-js/building-a-next-js-app-with-slash-graphql/
 
+const DEFAULT_DEV_GRAPHQL = 'http://localhost:3001/api/graphql';
+const DEFAULT_PROD_GRAPHQL = 'https://admin.unionchurch.cl/api/graphql';
+
+function resolveGraphqlUri() {
+  const isDev = process.env.NODE_ENV === 'development';
+  const configured = isDev ? process.env.ENDPOINT : process.env.PRODENDPOINT;
+
+  if (!configured) {
+    return isDev ? DEFAULT_DEV_GRAPHQL : DEFAULT_PROD_GRAPHQL;
+  }
+
+  // Relative paths like "/graphql" fail during SSG/SSR on Vercel.
+  if (configured.startsWith('/')) {
+    return DEFAULT_PROD_GRAPHQL;
+  }
+
+  // GraphQL lives on the admin host, not the public site.
+  if (
+    configured.includes('unionchurch.cl') &&
+    !configured.includes('admin.unionchurch.cl')
+  ) {
+    return DEFAULT_PROD_GRAPHQL;
+  }
+
+  return configured;
+}
+
 let apolloClient;
 
 // ############################################################
 
 const httpLink = new HttpLink({
-  uri:
-    process.env.NODE_ENV === 'development'
-      ? process.env.ENDPOINT
-      : process.env.PRODENDPOINT,
+  uri: resolveGraphqlUri(),
   credentials: 'include',
 });
 

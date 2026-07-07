@@ -8,7 +8,13 @@ import {
 } from '@/lib/services/ministerios';
 
 export async function MinisteriosGrid() {
-  const ministerios = await getHomepageMinisterios();
+  let ministerios: MinisterioSummary[] = [];
+
+  try {
+    ministerios = await getHomepageMinisterios();
+  } catch (error) {
+    console.error('Failed to load homepage ministerios:', error);
+  }
 
   if (ministerios.length === 0) {
     return null;
