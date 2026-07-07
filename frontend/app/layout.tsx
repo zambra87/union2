@@ -3,6 +3,8 @@ import { Metadata } from 'next';
 import { DM_Sans, DM_Serif_Display } from 'next/font/google';
 import { Footer } from './components/Footer';
 import { LiveProvider } from './contexts/LiveContext';
+import { MinisteriosProvider } from './contexts/MinisteriosContext';
+import { getMenuMinisterios, MinisterioSummary } from '@/lib/services/ministerios';
 
 export const metadata: Metadata = {
   title: {
@@ -25,15 +27,25 @@ const dmSans = DM_Sans({
   variable: '--font-dm-sans',
 });
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  let ministerios: MinisterioSummary[] = [];
+
+  try {
+    ministerios = await getMenuMinisterios();
+  } catch (error) {
+    console.error('Failed to load ministerios for menu:', error);
+  }
+
   return (
     <html lang="en">
       <body className={`${dmSerifDisplay.variable} ${dmSans.variable}`}>
-        <LiveProvider>{children}</LiveProvider>
+        <MinisteriosProvider ministerios={ministerios}>
+          <LiveProvider>{children}</LiveProvider>
+        </MinisteriosProvider>
         <Footer />
       </body>
     </html>

@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { ministeriosLinks } from '@/app/data/ministerios';
+import { useMinisterios } from '@/app/contexts/MinisteriosContext';
+import { getMinisterioHref } from '@/lib/services/ministerios';
 
 type MinisteriosMenuProps = {
   linkClass: string;
@@ -12,6 +13,7 @@ type MinisteriosMenuProps = {
 export function MinisteriosMenu({ linkClass, variant }: MinisteriosMenuProps) {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const { ministerios } = useMinisterios();
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -102,31 +104,32 @@ export function MinisteriosMenu({ linkClass, variant }: MinisteriosMenuProps) {
           className={`absolute right-0 md:left-0 md:right-auto top-full mt-2 min-w-[200px] rounded-md border py-2 z-50 ${dropdownClass}`}
           role="menu"
         >
-          {ministeriosLinks.map((ministerio) => {
-            const isExternal = ministerio.href.startsWith('http');
+          {ministerios.map((ministerio) => {
+            const href = getMinisterioHref(ministerio);
+            const isExternal = href.startsWith('http');
             const className = `block px-4 py-2 text-sm whitespace-nowrap ${itemClass}`;
 
             return (
-              <li key={ministerio.href} role="none">
+              <li key={ministerio.id} role="none">
                 {isExternal ? (
                   <a
-                    href={ministerio.href}
+                    href={href}
                     target="_blank"
                     rel="noopener noreferrer"
                     role="menuitem"
                     className={className}
                     onClick={() => setOpen(false)}
                   >
-                    {ministerio.label}
+                    {ministerio.name}
                   </a>
                 ) : (
                   <Link
-                    href={ministerio.href}
+                    href={href}
                     role="menuitem"
                     className={className}
                     onClick={() => setOpen(false)}
                   >
-                    {ministerio.label}
+                    {ministerio.name}
                   </Link>
                 )}
               </li>

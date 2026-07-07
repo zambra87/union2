@@ -1,21 +1,12 @@
-import Image from 'next/image';
 import { LatestShepperDesk, LatestServices } from './components/';
 import horaciopatty from '@/public/images/horaciopatty.png';
 import sign from '@/public/images/sign.png';
-import mujeres from '@/public/images/ministries/1.png';
-import unionKids from '@/public/images/ministries/2.png';
-import unionX from '@/public/images/ministries/3.png';
-import unionPlus from '@/public/images/ministries/7.png';
-import hombres from '@/public/images/ministries/4.png';
-import dorados from '@/public/images/ministries/5.png';
-import leones from '@/public/images/ministries/6.png';
-import matrimonios from '@/public/images/ministries/8.png';
-import manos from '@/public/images/ministries/9.jpg';
-import rema from '@/public/images/ministries/10.png';
 import { CircleFinal } from '@/app/components/shapes/CircleFinal';
 import Newsletter from './components/Newsletter';
 import Link from 'next/link';
 import { Cover } from './components/Cover';
+import { MinisteriosGrid } from './components/MinisteriosGrid';
+import Image from 'next/image';
 
 export default async function Home() {
   return (
@@ -64,136 +55,7 @@ export default async function Home() {
         Intégrate a nuestros grupos de crecimiento
       </p>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 justify-items-center">
-        <Link
-          href="/kids"
-          className="w-[140px] h-[140px] flex items-center justify-center"
-        >
-          <Image
-            alt="union kids"
-            src={unionKids}
-            className="grayscale hover:grayscale-0 object-contain"
-            placeholder="blur"
-          />
-        </Link>
-
-        <a
-          href="https://www.unionchurch.cl/leones"
-          target="_blank"
-          className="w-[140px] h-[140px] flex items-center justify-center"
-        >
-          <Image
-            alt="leones"
-            src={leones}
-            className="invert object-contain hover:grayscale-0"
-            placeholder="blur"
-          />
-        </a>
-
-        <a
-          href="https://www.unionchurch.cl/unionx"
-          target="_blank"
-          className="w-[140px] h-[140px] flex items-center justify-center"
-        >
-          <Image
-            alt="union x"
-            src={unionX}
-            className="grayscale hover:grayscale-0 object-contain"
-            placeholder="blur"
-          />
-        </a>
-
-        <a
-          href="https://www.unionchurch.cl/unionplus"
-          target="_blank"
-          className="w-[140px] h-[140px] flex items-center justify-center"
-        >
-          <Image
-            alt="union +"
-            src={unionPlus}
-            className="grayscale hover:grayscale-0 object-contain"
-            placeholder="blur"
-          />
-        </a>
-
-        <a
-          href="https://www.unionchurch.cl/mujeres"
-          target="_blank"
-          className="w-[140px] h-[140px] flex items-center justify-center"
-        >
-          <Image
-            alt="mujeres"
-            src={mujeres}
-            className="grayscale hover:grayscale-0 object-contain"
-            placeholder="blur"
-          />
-        </a>
-
-        <a
-          href="https://www.unionchurch.cl/hombres"
-          target="_blank"
-          className="w-[140px] h-[140px] flex items-center justify-center"
-        >
-          <Image
-            alt="hombres"
-            src={hombres}
-            className="grayscale hover:grayscale-0 object-contain"
-            placeholder="blur"
-          />
-        </a>
-
-        <a
-          href="https://www.unionchurch.cl/dorados"
-          target="_blank"
-          className="w-[140px] h-[140px] flex items-center justify-center"
-        >
-          <Image
-            alt="años dorados"
-            src={dorados}
-            className="grayscale hover:grayscale-0 object-contain"
-            placeholder="blur"
-          />
-        </a>
-
-        <a
-          href="https://www.unionchurch.cl/matrimonios"
-          target="_blank"
-          className="w-[140px] h-[140px] flex items-center justify-center"
-        >
-          <Image
-            alt="matrimonios"
-            src={matrimonios}
-            className="grayscale hover:grayscale-0 object-contain"
-            placeholder="blur"
-          />
-        </a>
-
-        <a
-          href="https://www.unionchurch.cl/manos"
-          target="_blank"
-          className="w-[140px] h-[140px] flex items-center justify-center"
-        >
-          <Image
-            alt="manos en acción"
-            src={manos}
-            className="grayscale hover:grayscale-0 object-contain"
-            placeholder="blur"
-          />
-        </a>
-
-        <a
-          href="https://www.unionchurch.cl/rema"
-          target="_blank"
-          className="w-[140px] h-[140px] flex items-center justify-center md:col-start-2 lg:col-start-auto"
-        >
-          <Image
-            alt="rema"
-            src={rema}
-            className="grayscale hover:grayscale-0 object-contain"
-            placeholder="blur"
-          />
-        </a>
-      </div>
+      <MinisteriosGrid />
 
       <div className="px-8 sm:px-0 bg-pink-light" style={{ zIndex: '-1' }}>
         <div className="relative">

@@ -8,12 +8,6 @@ export type MinistryData = {
   title: string;
   intro: string;
   heroImage: string;
-  cta: {
-    title: string;
-    subtitle: string;
-    buttonLabel: string;
-    buttonHref: string;
-  };
   description: {
     title: string;
     paragraphs: string[];

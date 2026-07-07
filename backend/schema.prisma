@@ -24,3 +24,38 @@ model Person {
   email    String @unique @default("")
   password String
 }
+
+model Ministerio {
+  id               String             @id @default(cuid())
+  name             String             @default("")
+  slug             String             @unique @default("")
+  order            Int?               @default(0)
+  showInMenu       Boolean            @default(true)
+  showOnHomepage   Boolean            @default(true)
+  externalUrl      String             @default("")
+  logoInvert       Boolean            @default(false)
+  eyebrow          String             @default("MINISTERIOS")
+  title            String             @default("")
+  intro            String             @default("")
+  heroImage        Json?
+  logo             Json?
+  heroImageUrl     String             @default("")
+  logoUrl          String             @default("")
+  descriptionTitle String             @default("Descripción")
+  description      String             @default("")
+  scheduleLabel    String             @default("Horario")
+  scheduleValue    String             @default("")
+  locationLabel    String             @default("Ubicación")
+  locationValue    String             @default("")
+  leadersLabel     String             @default("Encargados")
+  leaders          MinisterioLeader[] @relation("MinisterioLeaders")
+}
+
+model MinisterioLeader {
+  id           String      @id @default(cuid())
+  name         String      @default("")
+  photo        Json?
+  photoUrl     String      @default("")
+  ministerio   Ministerio? @relation("MinisterioLeaders", fields: [ministerioId], references: [id])
+  ministerioId String?     @map("ministerio")
+}

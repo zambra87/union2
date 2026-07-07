@@ -24,6 +24,15 @@ const moduleExports = {
         protocol: 'https',
         hostname: 'dogeto6fbhozh.cloudfront.net',
       },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '3001',
+      },
+      {
+        protocol: 'https',
+        hostname: 'admin.unionchurch.cl',
+      },
     ],
   },
   sentry: {

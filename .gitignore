@@ -9,3 +9,4 @@ variables.env
 *.env
 .keystone
 backend/db/
+backend/public/uploads/
