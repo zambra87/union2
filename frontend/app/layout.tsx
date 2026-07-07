@@ -4,7 +4,10 @@ import { DM_Sans, DM_Serif_Display } from 'next/font/google';
 import { Footer } from './components/Footer';
 import { LiveProvider } from './contexts/LiveContext';
 import { MinisteriosProvider } from './contexts/MinisteriosContext';
-import { getMenuMinisterios, MinisterioSummary } from '@/lib/services/ministerios';
+import {
+  getMenuMinisterios,
+  MinisterioSummary,
+} from '@/lib/services/ministerios';
 
 export const metadata: Metadata = {
   title: {

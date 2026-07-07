@@ -114,7 +114,9 @@ function mapLeaders(leaders: MinisterioLeaderRecord[]): MinistryLeader[] {
   }));
 }
 
-export function getMinisterioHref(ministerio: Pick<MinisterioSummary, 'slug' | 'externalUrl'>) {
+export function getMinisterioHref(
+  ministerio: Pick<MinisterioSummary, 'slug' | 'externalUrl'>
+) {
   if (ministerio.externalUrl) {
     return ministerio.externalUrl;
   }
@@ -122,7 +124,9 @@ export function getMinisterioHref(ministerio: Pick<MinisterioSummary, 'slug' | '
   return `/ministerios/${ministerio.slug}`;
 }
 
-export function getMinisterioLogoUrl(ministerio: Pick<MinisterioSummary, 'logo' | 'logoUrl'>) {
+export function getMinisterioLogoUrl(
+  ministerio: Pick<MinisterioSummary, 'logo' | 'logoUrl'>
+) {
   return getImageUrl(ministerio.logo, ministerio.logoUrl);
 }
 
@@ -163,7 +167,9 @@ export function mapMinisterioToMinistryData(
 async function fetchMinisterios(where: Record<string, unknown>) {
   const apolloClient = initializeApollo(null);
 
-  const { data } = await apolloClient.query<{ ministerios: MinisterioRecord[] }>({
+  const { data } = await apolloClient.query<{
+    ministerios: MinisterioRecord[];
+  }>({
     query: GET_MINISTERIOS,
     variables: { where },
   });
@@ -182,7 +188,9 @@ export async function getHomepageMinisterios() {
 export async function getMinisterioBySlug(slug: string) {
   const apolloClient = initializeApollo(null);
 
-  const { data } = await apolloClient.query<{ ministerio: MinisterioRecord | null }>({
+  const { data } = await apolloClient.query<{
+    ministerio: MinisterioRecord | null;
+  }>({
     query: GET_MINISTERIO_BY_SLUG,
     variables: { slug },
   });
