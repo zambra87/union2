@@ -5,16 +5,10 @@ import {
   getMinisterioHref,
   getMinisterioLogoUrl,
   type MinisterioSummary,
-} from '@/lib/services/ministerios';
+} from '@/app/data/ministerios';
 
-export async function MinisteriosGrid() {
-  let ministerios: MinisterioSummary[] = [];
-
-  try {
-    ministerios = await getHomepageMinisterios();
-  } catch (error) {
-    console.error('Failed to load homepage ministerios:', error);
-  }
+export function MinisteriosGrid() {
+  const ministerios = getHomepageMinisterios();
 
   if (ministerios.length === 0) {
     return null;
@@ -44,7 +38,7 @@ export async function MinisteriosGrid() {
         if (isExternal) {
           return (
             <a
-              key={ministerio.id}
+              key={ministerio.slug}
               href={href}
               target="_blank"
               rel="noopener noreferrer"
@@ -57,7 +51,7 @@ export async function MinisteriosGrid() {
 
         return (
           <Link
-            key={ministerio.id}
+            key={ministerio.slug}
             href={href}
             className="w-[140px] h-[140px] flex items-center justify-center"
           >

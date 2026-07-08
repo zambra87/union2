@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext } from 'react';
-import { MinisterioSummary } from '@/lib/services/ministerios';
+import { MinisterioSummary } from '@/app/data/ministerios';
 
 type MinisteriosContextType = {
   ministerios: MinisterioSummary[];

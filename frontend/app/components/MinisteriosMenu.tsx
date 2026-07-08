@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useMinisterios } from '@/app/contexts/MinisteriosContext';
-import { getMinisterioHref } from '@/lib/services/ministerios';
+import { getMinisterioHref } from '@/app/data/ministerios';
 
 type MinisteriosMenuProps = {
   linkClass: string;
@@ -110,7 +110,7 @@ export function MinisteriosMenu({ linkClass, variant }: MinisteriosMenuProps) {
             const className = `block px-4 py-2 text-sm whitespace-nowrap ${itemClass}`;
 
             return (
-              <li key={ministerio.id} role="none">
+              <li key={ministerio.slug} role="none">
                 {isExternal ? (
                   <a
                     href={href}
