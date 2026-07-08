@@ -27,12 +27,12 @@ function leadersFromNames(
     .split(/,| y /)
     .map((name) => name.trim())
     .filter(Boolean)
-    .map((name) => ({
+    .map((name, index) => ({
       name,
       image:
         slug === 'kids'
-          ? '/images/kids/leader.jpg'
-          : `/images/ministerios/${slug}/leader.jpg`,
+          ? `/images/kids/leader-${index + 1}.jpg`
+          : `/images/ministerios/${slug}/leader-${index + 1}.jpg`,
     }));
 
   return {
@@ -75,7 +75,7 @@ export const ministerios: MinisterioStatic[] = [
           people: [
             {
               name: 'Paula Valenzuela',
-              image: '/images/ministerios/misiones/leader.jpg',
+              image: '/images/ministerios/misiones/leader-1.jpg',
             },
           ],
         },
@@ -334,7 +334,7 @@ export const ministerios: MinisterioStatic[] = [
           people: [
             {
               name: 'Psicóloga Ingrid Olguín',
-              image: '/images/ministerios/rema/leader.jpg',
+              image: '/images/ministerios/rema/leader-1.jpg',
             },
           ],
         },
