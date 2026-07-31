@@ -140,6 +140,258 @@ input PersonCreateInput {
   password: String
 }
 
+type MinisterioLeader {
+  id: ID!
+  name: String
+  photo: ImageFieldOutput
+  photoUrl: String
+  ministerio: Ministerio
+}
+
+type ImageFieldOutput {
+  id: ID!
+  filesize: Int!
+  width: Int!
+  height: Int!
+  extension: ImageExtension!
+  url: String!
+}
+
+enum ImageExtension {
+  jpg
+  png
+  webp
+  gif
+}
+
+input MinisterioLeaderWhereUniqueInput {
+  id: ID
+}
+
+input MinisterioLeaderWhereInput {
+  AND: [MinisterioLeaderWhereInput!]
+  OR: [MinisterioLeaderWhereInput!]
+  NOT: [MinisterioLeaderWhereInput!]
+  id: IDFilter
+  name: StringFilter
+  photoUrl: StringFilter
+  ministerio: MinisterioWhereInput
+}
+
+input MinisterioLeaderOrderByInput {
+  id: OrderDirection
+  name: OrderDirection
+  photoUrl: OrderDirection
+}
+
+input MinisterioLeaderUpdateInput {
+  name: String
+  photo: ImageFieldInput
+  photoUrl: String
+  ministerio: MinisterioRelateToOneForUpdateInput
+}
+
+input ImageFieldInput {
+  upload: Upload!
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+input MinisterioRelateToOneForUpdateInput {
+  create: MinisterioCreateInput
+  connect: MinisterioWhereUniqueInput
+  disconnect: Boolean
+}
+
+input MinisterioLeaderUpdateArgs {
+  where: MinisterioLeaderWhereUniqueInput!
+  data: MinisterioLeaderUpdateInput!
+}
+
+input MinisterioLeaderCreateInput {
+  name: String
+  photo: ImageFieldInput
+  photoUrl: String
+  ministerio: MinisterioRelateToOneForCreateInput
+}
+
+input MinisterioRelateToOneForCreateInput {
+  create: MinisterioCreateInput
+  connect: MinisterioWhereUniqueInput
+}
+
+type Ministerio {
+  id: ID!
+  name: String
+  slug: String
+  order: Int
+  showInMenu: Boolean
+  showOnHomepage: Boolean
+  externalUrl: String
+  logoInvert: Boolean
+  eyebrow: String
+  title: String
+  intro: String
+  heroImage: ImageFieldOutput
+  logo: ImageFieldOutput
+  heroImageUrl: String
+  logoUrl: String
+  descriptionTitle: String
+  description: String
+  scheduleLabel: String
+  scheduleValue: String
+  locationLabel: String
+  locationValue: String
+  leadersLabel: String
+  leaders(where: MinisterioLeaderWhereInput! = {}, orderBy: [MinisterioLeaderOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: MinisterioLeaderWhereUniqueInput): [MinisterioLeader!]
+  leadersCount(where: MinisterioLeaderWhereInput! = {}): Int
+}
+
+input MinisterioWhereUniqueInput {
+  id: ID
+  slug: String
+}
+
+input MinisterioWhereInput {
+  AND: [MinisterioWhereInput!]
+  OR: [MinisterioWhereInput!]
+  NOT: [MinisterioWhereInput!]
+  id: IDFilter
+  name: StringFilter
+  slug: StringFilter
+  order: IntNullableFilter
+  showInMenu: BooleanFilter
+  showOnHomepage: BooleanFilter
+  externalUrl: StringFilter
+  logoInvert: BooleanFilter
+  eyebrow: StringFilter
+  title: StringFilter
+  intro: StringFilter
+  heroImageUrl: StringFilter
+  logoUrl: StringFilter
+  descriptionTitle: StringFilter
+  description: StringFilter
+  scheduleLabel: StringFilter
+  scheduleValue: StringFilter
+  locationLabel: StringFilter
+  locationValue: StringFilter
+  leadersLabel: StringFilter
+  leaders: MinisterioLeaderManyRelationFilter
+}
+
+input IntNullableFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: IntNullableFilter
+}
+
+input BooleanFilter {
+  equals: Boolean
+  not: BooleanFilter
+}
+
+input MinisterioLeaderManyRelationFilter {
+  every: MinisterioLeaderWhereInput
+  some: MinisterioLeaderWhereInput
+  none: MinisterioLeaderWhereInput
+}
+
+input MinisterioOrderByInput {
+  id: OrderDirection
+  name: OrderDirection
+  slug: OrderDirection
+  order: OrderDirection
+  showInMenu: OrderDirection
+  showOnHomepage: OrderDirection
+  externalUrl: OrderDirection
+  logoInvert: OrderDirection
+  eyebrow: OrderDirection
+  title: OrderDirection
+  intro: OrderDirection
+  heroImageUrl: OrderDirection
+  logoUrl: OrderDirection
+  descriptionTitle: OrderDirection
+  description: OrderDirection
+  scheduleLabel: OrderDirection
+  scheduleValue: OrderDirection
+  locationLabel: OrderDirection
+  locationValue: OrderDirection
+  leadersLabel: OrderDirection
+}
+
+input MinisterioUpdateInput {
+  name: String
+  slug: String
+  order: Int
+  showInMenu: Boolean
+  showOnHomepage: Boolean
+  externalUrl: String
+  logoInvert: Boolean
+  eyebrow: String
+  title: String
+  intro: String
+  heroImage: ImageFieldInput
+  logo: ImageFieldInput
+  heroImageUrl: String
+  logoUrl: String
+  descriptionTitle: String
+  description: String
+  scheduleLabel: String
+  scheduleValue: String
+  locationLabel: String
+  locationValue: String
+  leadersLabel: String
+  leaders: MinisterioLeaderRelateToManyForUpdateInput
+}
+
+input MinisterioLeaderRelateToManyForUpdateInput {
+  disconnect: [MinisterioLeaderWhereUniqueInput!]
+  set: [MinisterioLeaderWhereUniqueInput!]
+  create: [MinisterioLeaderCreateInput!]
+  connect: [MinisterioLeaderWhereUniqueInput!]
+}
+
+input MinisterioUpdateArgs {
+  where: MinisterioWhereUniqueInput!
+  data: MinisterioUpdateInput!
+}
+
+input MinisterioCreateInput {
+  name: String
+  slug: String
+  order: Int
+  showInMenu: Boolean
+  showOnHomepage: Boolean
+  externalUrl: String
+  logoInvert: Boolean
+  eyebrow: String
+  title: String
+  intro: String
+  heroImage: ImageFieldInput
+  logo: ImageFieldInput
+  heroImageUrl: String
+  logoUrl: String
+  descriptionTitle: String
+  description: String
+  scheduleLabel: String
+  scheduleValue: String
+  locationLabel: String
+  locationValue: String
+  leadersLabel: String
+  leaders: MinisterioLeaderRelateToManyForCreateInput
+}
+
+input MinisterioLeaderRelateToManyForCreateInput {
+  create: [MinisterioLeaderCreateInput!]
+  connect: [MinisterioLeaderWhereUniqueInput!]
+}
+
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
@@ -158,6 +410,18 @@ type Mutation {
   updatePeople(data: [PersonUpdateArgs!]!): [Person]
   deletePerson(where: PersonWhereUniqueInput!): Person
   deletePeople(where: [PersonWhereUniqueInput!]!): [Person]
+  createMinisterioLeader(data: MinisterioLeaderCreateInput!): MinisterioLeader
+  createMinisterioLeaders(data: [MinisterioLeaderCreateInput!]!): [MinisterioLeader]
+  updateMinisterioLeader(where: MinisterioLeaderWhereUniqueInput!, data: MinisterioLeaderUpdateInput!): MinisterioLeader
+  updateMinisterioLeaders(data: [MinisterioLeaderUpdateArgs!]!): [MinisterioLeader]
+  deleteMinisterioLeader(where: MinisterioLeaderWhereUniqueInput!): MinisterioLeader
+  deleteMinisterioLeaders(where: [MinisterioLeaderWhereUniqueInput!]!): [MinisterioLeader]
+  createMinisterio(data: MinisterioCreateInput!): Ministerio
+  createMinisterios(data: [MinisterioCreateInput!]!): [Ministerio]
+  updateMinisterio(where: MinisterioWhereUniqueInput!, data: MinisterioUpdateInput!): Ministerio
+  updateMinisterios(data: [MinisterioUpdateArgs!]!): [Ministerio]
+  deleteMinisterio(where: MinisterioWhereUniqueInput!): Ministerio
+  deleteMinisterios(where: [MinisterioWhereUniqueInput!]!): [Ministerio]
   endSession: Boolean!
   authenticatePersonWithPassword(email: String!, password: String!): PersonAuthenticationWithPasswordResult
   createInitialPerson(data: CreateInitialPersonInput!): PersonAuthenticationWithPasswordSuccess!
@@ -181,12 +445,18 @@ input CreateInitialPersonInput {
 }
 
 type Query {
-  redirects(where: RedirectWhereInput! = {}, orderBy: [RedirectOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: RedirectWhereUniqueInput): [Redirect!]
   redirect(where: RedirectWhereUniqueInput!): Redirect
+  redirects(where: RedirectWhereInput! = {}, orderBy: [RedirectOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: RedirectWhereUniqueInput): [Redirect!]
   redirectsCount(where: RedirectWhereInput! = {}): Int
-  people(where: PersonWhereInput! = {}, orderBy: [PersonOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: PersonWhereUniqueInput): [Person!]
   person(where: PersonWhereUniqueInput!): Person
+  people(where: PersonWhereInput! = {}, orderBy: [PersonOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: PersonWhereUniqueInput): [Person!]
   peopleCount(where: PersonWhereInput! = {}): Int
+  ministerioLeader(where: MinisterioLeaderWhereUniqueInput!): MinisterioLeader
+  ministerioLeaders(where: MinisterioLeaderWhereInput! = {}, orderBy: [MinisterioLeaderOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: MinisterioLeaderWhereUniqueInput): [MinisterioLeader!]
+  ministerioLeadersCount(where: MinisterioLeaderWhereInput! = {}): Int
+  ministerio(where: MinisterioWhereUniqueInput!): Ministerio
+  ministerios(where: MinisterioWhereInput! = {}, orderBy: [MinisterioOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: MinisterioWhereUniqueInput): [Ministerio!]
+  ministeriosCount(where: MinisterioWhereInput! = {}): Int
   keystone: KeystoneMeta!
   authenticatedItem: AuthenticatedItem
 }
@@ -204,23 +474,25 @@ type KeystoneAdminMeta {
 
 type KeystoneAdminUIListMeta {
   key: String!
-  itemQueryName: String!
-  listQueryName: String!
-  hideCreate: Boolean!
-  hideDelete: Boolean!
   path: String!
   label: String!
   singular: String!
   plural: String!
   description: String
-  initialColumns: [String!]!
   pageSize: Int!
   labelField: String!
   fields: [KeystoneAdminUIFieldMeta!]!
   groups: [KeystoneAdminUIFieldGroupMeta!]!
+  graphql: KeystoneAdminUIGraphQL!
+  initialColumns: [String!]!
+  initialSearchFields: [String!]!
   initialSort: KeystoneAdminUISort
-  isHidden: Boolean!
   isSingleton: Boolean!
+  hideCreate: Boolean!
+  hideDelete: Boolean!
+  isHidden: Boolean!
+  itemQueryName: String!
+  listQueryName: String!
 }
 
 type KeystoneAdminUIFieldMeta {
@@ -283,6 +555,33 @@ type KeystoneAdminUIFieldGroupMeta {
   label: String!
   description: String
   fields: [KeystoneAdminUIFieldMeta!]!
+}
+
+type KeystoneAdminUIGraphQL {
+  names: KeystoneAdminUIGraphQLNames!
+}
+
+type KeystoneAdminUIGraphQLNames {
+  outputTypeName: String!
+  whereInputName: String!
+  whereUniqueInputName: String!
+  createInputName: String!
+  createMutationName: String!
+  createManyMutationName: String!
+  relateToOneForCreateInputName: String!
+  relateToManyForCreateInputName: String!
+  itemQueryName: String!
+  listOrderName: String!
+  listQueryCountName: String!
+  listQueryName: String!
+  updateInputName: String!
+  updateMutationName: String!
+  updateManyInputName: String!
+  updateManyMutationName: String!
+  relateToOneForUpdateInputName: String!
+  relateToManyForUpdateInputName: String!
+  deleteMutationName: String!
+  deleteManyMutationName: String!
 }
 
 type KeystoneAdminUISort {

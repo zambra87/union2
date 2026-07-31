@@ -42,10 +42,10 @@ function CoverContent({ isLive, videoId, isLoading }: CoverContentProps) {
       />
       <div className="h-full flex justify-center items-center relative">
         <div>
-          <p className="text-center font-semibold drop-shadow-lg text-white font-sans text-5xl mt-40 mb-2 md:text-6xl lg:text-6xl">
+          <p className="text-center font-semibold drop-shadow-lg text-white font-sans text-5xl mt-75 mb-2 md:text-6xl lg:text-7xl">
             Union Church
           </p>
-          <p className="text-center text-white drop-shadow-lg font-serif text-3xl mb-20 md:text-2xl lg:text-2xl">
+          <p className="text-center text-white drop-shadow-lg font-serif text-3xl mb-5 md:text-2xl lg:text-3xl">
             Bienvenido a Casa
           </p>
           <div className="flex justify-center">

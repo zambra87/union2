@@ -29,6 +29,7 @@ export function MinistryPage({ data }: MinistryPageProps) {
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 44vw"
               priority
+              unoptimized
             />
           </div>
         </div>
@@ -76,6 +77,7 @@ export function MinistryPage({ data }: MinistryPageProps) {
                         fill
                         className="object-cover"
                         sizes="80px"
+                        unoptimized
                       />
                     </div>
                     {person.name && (

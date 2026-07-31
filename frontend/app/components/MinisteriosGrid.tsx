@@ -31,7 +31,7 @@ export function MinisteriosGrid() {
             width={140}
             height={140}
             className={imageClass}
-            unoptimized={logoUrl.startsWith('http')}
+            unoptimized
           />
         );
 

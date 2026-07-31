@@ -1,3 +1,4 @@
+# Trigger deploy after Keystone v6 upgrade.
 [build]
 builder = "nixpacks"
 buildCommand = "npm run build"

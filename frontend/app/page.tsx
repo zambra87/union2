@@ -52,7 +52,7 @@ export default async function Home() {
       </div>
 
       <p className="text-lg font-sans sm:text-xl md:text-2xl text-gray-800 mb-2 text-center">
-        Intégrate a nuestros grupos de crecimiento
+        Conoce nuestros ministerios
       </p>
 
       <MinisteriosGrid />

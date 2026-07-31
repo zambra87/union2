@@ -25,37 +25,51 @@ model Person {
   password String
 }
 
-model Ministerio {
-  id               String             @id @default(cuid())
-  name             String             @default("")
-  slug             String             @unique @default("")
-  order            Int?               @default(0)
-  showInMenu       Boolean            @default(true)
-  showOnHomepage   Boolean            @default(true)
-  externalUrl      String             @default("")
-  logoInvert       Boolean            @default(false)
-  eyebrow          String             @default("MINISTERIOS")
-  title            String             @default("")
-  intro            String             @default("")
-  heroImage        Json?
-  logo             Json?
-  heroImageUrl     String             @default("")
-  logoUrl          String             @default("")
-  descriptionTitle String             @default("Descripción")
-  description      String             @default("")
-  scheduleLabel    String             @default("Horario")
-  scheduleValue    String             @default("")
-  locationLabel    String             @default("Ubicación")
-  locationValue    String             @default("")
-  leadersLabel     String             @default("Encargados")
-  leaders          MinisterioLeader[] @relation("MinisterioLeaders")
+model MinisterioLeader {
+  id              String      @id @default(cuid())
+  name            String      @default("")
+  photo_id        String?
+  photo_filesize  Int?
+  photo_width     Int?
+  photo_height    Int?
+  photo_extension String?
+  photoUrl        String      @default("")
+  ministerio      Ministerio? @relation("MinisterioLeader_ministerio", fields: [ministerioId], references: [id])
+  ministerioId    String?     @map("ministerio")
+
+  @@index([ministerioId])
 }
 
-model MinisterioLeader {
-  id           String      @id @default(cuid())
-  name         String      @default("")
-  photo        Json?
-  photoUrl     String      @default("")
-  ministerio   Ministerio? @relation("MinisterioLeaders", fields: [ministerioId], references: [id])
-  ministerioId String?     @map("ministerio")
+model Ministerio {
+  id                  String             @id @default(cuid())
+  name                String             @default("")
+  slug                String             @unique @default("")
+  order               Int?               @default(0)
+  showInMenu          Boolean            @default(true)
+  showOnHomepage      Boolean            @default(true)
+  externalUrl         String             @default("")
+  logoInvert          Boolean            @default(false)
+  eyebrow             String             @default("MINISTERIOS")
+  title               String             @default("")
+  intro               String             @default("")
+  heroImage_id        String?
+  heroImage_filesize  Int?
+  heroImage_width     Int?
+  heroImage_height    Int?
+  heroImage_extension String?
+  logo_id             String?
+  logo_filesize       Int?
+  logo_width          Int?
+  logo_height         Int?
+  logo_extension      String?
+  heroImageUrl        String             @default("")
+  logoUrl             String             @default("")
+  descriptionTitle    String             @default("Descripción")
+  description         String             @default("")
+  scheduleLabel       String             @default("Horario")
+  scheduleValue       String             @default("")
+  locationLabel       String             @default("Ubicación")
+  locationValue       String             @default("")
+  leadersLabel        String             @default("Encargados")
+  leaders             MinisterioLeader[] @relation("MinisterioLeader_ministerio")
 }

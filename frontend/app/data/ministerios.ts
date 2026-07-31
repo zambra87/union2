@@ -46,11 +46,11 @@ export const ministerios: MinisterioStatic[] = [
   {
     slug: 'misiones',
     name: 'Misiones Union Church',
-    order: 1,
+    order: 11,
     showInMenu: true,
     showOnHomepage: true,
     externalUrl: '',
-    logoUrl: '/images/ministerios/misiones/logo.png',
+    logoUrl: '/images/ministries/11.png',
     logoInvert: false,
     page: {
       eyebrow: 'MINISTERIOS',
@@ -85,7 +85,7 @@ export const ministerios: MinisterioStatic[] = [
   {
     slug: 'matrimonios',
     name: 'Matrimonios',
-    order: 2,
+    order: 5,
     showInMenu: true,
     showOnHomepage: true,
     externalUrl: '',
@@ -120,7 +120,7 @@ export const ministerios: MinisterioStatic[] = [
   {
     slug: 'dorados',
     name: 'Años Dorados',
-    order: 3,
+    order: 8,
     showInMenu: true,
     showOnHomepage: true,
     externalUrl: '',
@@ -158,7 +158,7 @@ export const ministerios: MinisterioStatic[] = [
   {
     slug: 'unionx',
     name: 'Union X',
-    order: 4,
+    order: 3,
     showInMenu: true,
     showOnHomepage: true,
     externalUrl: '',
@@ -190,7 +190,7 @@ export const ministerios: MinisterioStatic[] = [
   {
     slug: 'hombres',
     name: 'Red de Hombres',
-    order: 5,
+    order: 7,
     showInMenu: true,
     showOnHomepage: true,
     externalUrl: '',
@@ -267,7 +267,7 @@ export const ministerios: MinisterioStatic[] = [
   {
     slug: 'unionplus',
     name: 'Union +',
-    order: 7,
+    order: 4,
     showInMenu: true,
     showOnHomepage: true,
     externalUrl: '',
@@ -305,7 +305,7 @@ export const ministerios: MinisterioStatic[] = [
   {
     slug: 'rema',
     name: 'REMA',
-    order: 8,
+    order: 10,
     showInMenu: true,
     showOnHomepage: true,
     externalUrl: '',
@@ -314,12 +314,12 @@ export const ministerios: MinisterioStatic[] = [
     page: {
       eyebrow: 'MINISTERIOS',
       title: 'REMA',
-      intro: 'Restauración para mujeres.',
+      intro: 'Restauración Emocional y Salud Mental.',
       heroImage: '/images/ministerios/rema/hero.jpg',
       description: {
         title: 'Descripción',
         paragraphs: [
-          'REMA Union Church tiene como propósito brindar acompañamiento integral a mujeres que han vivido experiencias difíciles, a través de un equipo de profesionales de la salud con formación cristiana.',
+          'REMA Union Church tiene como propósito brindar acompañamiento integral a personas que han vivido experiencias difíciles, a través de un equipo de profesionales de la salud con formación cristiana.',
         ],
       },
       sidebar: {
@@ -344,7 +344,7 @@ export const ministerios: MinisterioStatic[] = [
   {
     slug: 'leones',
     name: 'Leones',
-    order: 9,
+    order: 2,
     showInMenu: true,
     showOnHomepage: true,
     externalUrl: '',
@@ -376,11 +376,11 @@ export const ministerios: MinisterioStatic[] = [
   {
     slug: 'manos',
     name: 'Manos en Acción',
-    order: 10,
+    order: 9,
     showInMenu: true,
     showOnHomepage: true,
     externalUrl: '',
-    logoUrl: '/images/ministries/9.jpg',
+    logoUrl: '/images/ministries/9.png',
     logoInvert: false,
     page: {
       eyebrow: 'MINISTERIOS',
@@ -411,7 +411,7 @@ export const ministerios: MinisterioStatic[] = [
   {
     slug: 'kids',
     name: 'Union Kids',
-    order: 11,
+    order: 1,
     showInMenu: true,
     showOnHomepage: true,
     externalUrl: '',
