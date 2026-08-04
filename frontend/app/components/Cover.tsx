@@ -48,7 +48,7 @@ export function Cover() {
   return (
     <div className="relative h-screen overflow-x-hidden">
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed md:bg-top"
+        className="absolute inset-0 bg-no-repeat bg-scroll bg-[length:auto_155%] bg-[center_72%] md:bg-cover md:bg-fixed md:bg-top"
         style={{ backgroundImage: "url('/images/cover.jpg')" }}
       />
       <div className="relative z-[1] flex h-full flex-col">
