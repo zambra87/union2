@@ -56,7 +56,10 @@ const handleSubscriptionError = (error: unknown) => {
     console.error('Mailchimp subscription error:', error.response.body);
   } else if (error instanceof Error && error.name === 'AbortError') {
     return NextResponse.json(
-      { message: 'El servicio tardó demasiado en responder. Inténtalo de nuevo.' },
+      {
+        message:
+          'El servicio tardó demasiado en responder. Inténtalo de nuevo.',
+      },
       { status: 504 }
     );
   } else {
