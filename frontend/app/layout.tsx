@@ -2,7 +2,6 @@ import '@/app/global.css';
 import { Metadata } from 'next';
 import { DM_Sans, DM_Serif_Display } from 'next/font/google';
 import { Footer } from './components/Footer';
-import { LiveProvider } from './contexts/LiveContext';
 import { MinisteriosProvider } from './contexts/MinisteriosContext';
 import { getMenuMinisterios } from '@/app/data/ministerios';
 
@@ -38,7 +37,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${dmSerifDisplay.variable} ${dmSans.variable}`}>
         <MinisteriosProvider ministerios={ministerios}>
-          <LiveProvider>{children}</LiveProvider>
+          {children}
         </MinisteriosProvider>
         <Footer />
       </body>

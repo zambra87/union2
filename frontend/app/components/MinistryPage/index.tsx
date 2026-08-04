@@ -54,6 +54,16 @@ export function MinistryPage({ data }: MinistryPageProps) {
                 {data.sidebar.schedule.label}
               </h3>
               <p className="text-gray-600">{data.sidebar.schedule.value}</p>
+              {data.sidebar.schedule.link && (
+                <a
+                  href={data.sidebar.schedule.link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-block text-primary font-semibold border-b-2 border-primary hover:text-primary-dark transition-colors"
+                >
+                  {data.sidebar.schedule.link.label}
+                </a>
+              )}
             </div>
 
             <div className="mb-8">

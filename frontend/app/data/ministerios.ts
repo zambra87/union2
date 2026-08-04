@@ -64,7 +64,7 @@ export const ministerios: MinisterioStatic[] = [
         ],
       },
       sidebar: {
-        schedule: { label: 'Horario', value: 'Consultar en iglesia.' },
+        schedule: { label: 'Horario', value: 'Más info próximamente' },
         location: {
           label: 'Texto Bíblico',
           value:
@@ -323,7 +323,14 @@ export const ministerios: MinisterioStatic[] = [
         ],
       },
       sidebar: {
-        schedule: { label: 'Horario', value: 'Miércoles 18:00 y 20:00 hrs.' },
+        schedule: {
+          label: 'Horario',
+          value: 'Miércoles 18:00 y 20:00 hrs.',
+          link: {
+            label: 'Solicitar hora',
+            href: 'https://wa.me/56965696958?text=Hola%2C%20necesito%20solicitar%20una%20sesi%C3%B3n%20con%20la%20psic%C3%B3loga',
+          },
+        },
         location: {
           label: 'Texto Bíblico',
           value:

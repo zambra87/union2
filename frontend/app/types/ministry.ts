@@ -16,6 +16,10 @@ export type MinistryData = {
     schedule: {
       label: string;
       value: string;
+      link?: {
+        label: string;
+        href: string;
+      };
     };
     location: {
       label: string;

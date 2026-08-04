@@ -1,7 +1,3 @@
-'use client';
-
-import { useLive } from '@/app/contexts/LiveContext';
-import { YouTubePlayer } from './YouTubePlayer';
 import { Header } from './Header';
 
 function CoverHeroText() {
@@ -18,33 +14,6 @@ function CoverHeroText() {
 }
 
 export function Cover() {
-  const { isLive, videoId, isLoading } = useLive();
-
-  if (isLoading) {
-    return (
-      <div className="h-auto w-full bg-gray pt-40 pb-16 lg:h-screen flex flex-col">
-        <Header />
-        <div className="container mx-auto aspect-video flex-1 bg-gray-200 animate-pulse rounded-2xl flex justify-center items-center">
-          <p className="text-center text-2xl font-bold">Cargando...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (isLive && videoId) {
-    return (
-      <div className="h-auto w-full bg-gray pt-40 pb-16 lg:h-screen flex flex-col">
-        <Header />
-        <div className="container mx-auto px-8 md:px-0 flex-1 flex items-center">
-          <YouTubePlayer
-            className="h-full w-full aspect-video overflow-hidden rounded-2xl"
-            videoId={videoId}
-          />
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="relative h-screen overflow-x-hidden">
       <div

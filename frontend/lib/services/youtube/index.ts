@@ -1,28 +1,7 @@
-import { LiveStreamStatus } from './types';
 export { getMockLatestServices, getMockLatestShepherdDesk } from './mocks';
 export type { VideoRender, Video } from './types';
 
 const YOUTUBE_API_BASE = 'https://www.googleapis.com/youtube/v3';
-
-export async function getLiveStreamStatus(): Promise<LiveStreamStatus> {
-  try {
-    const res = await fetch('/api/youtube', {
-      next: {
-        revalidate: 60, // Cache for 1 minute since live status changes frequently
-      },
-    });
-
-    if (!res.ok) {
-      const error = await res.json();
-      throw new Error(error.error || 'Failed to check live status');
-    }
-
-    return res.json();
-  } catch (error) {
-    console.error('Error checking live status:', error);
-    throw error;
-  }
-}
 
 export async function getYouTubeVideos(playlistId: string) {
   if (!playlistId) {

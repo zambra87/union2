@@ -27,15 +27,3 @@ export type VideoRender = {
   thumbnailWidth: number;
   thumbnailHeight: number;
 };
-
-export interface LiveStreamStatus {
-  isLive: boolean;
-  stream: {
-    id: string;
-    title: string;
-    description: string;
-    publishedAt: string;
-    thumbnailUrl: string;
-    channelTitle: string;
-  } | null;
-}

@@ -1,8 +1,6 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useLive } from '@/app/contexts/LiveContext';
-import { Sensor } from './icons';
 import { MinisteriosMenu } from './MinisteriosMenu';
 
 type HeaderProps = {
@@ -10,8 +8,6 @@ type HeaderProps = {
 };
 
 export function Header({ variant = 'white' }: HeaderProps) {
-  const { isLive } = useLive();
-
   const headerClass =
     variant === 'white'
       ? 'bg-gradient-to-b from-gray-900 filter to-transparent w-full py-4 md:py-10 absolute top-0 '
@@ -46,15 +42,6 @@ export function Header({ variant = 'white' }: HeaderProps) {
               width="145"
             />
           </Link>
-          {isLive && (
-            <a
-              href="https://www.youtube.com/@unionchurch"
-              className="flex bg-red-500 items-center gap-2 rounded-full px-4 py-2 text-white hover:bg-red-600 transition-colors duration-300"
-            >
-              <Sensor className="w-6 h-6" />
-              <span>VIVO</span>
-            </a>
-          )}
         </div>
         <div className="flex gap-4 px-4 pt-4 md:pt-0 justify-between md:justify-normal">
           <Link href="/nosotros" className={linkClass}>
