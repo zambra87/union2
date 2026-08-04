@@ -73,20 +73,22 @@ export function Footer() {
           </p>
         </div>
       </div>
-      <div className="flex justify-center mb-8">
+      <div className="flex justify-center mb-8 text-white">
         <Link
           href="https://www.facebook.com/unionchurch.cl"
           target="_blank"
           rel="noreferrer"
+          className="mr-8"
         >
-          <Facebook className="mr-8" />
+          <Facebook />
         </Link>
         <Link
           href="https://www.instagram.com/unionchurch.cl/"
           target="_blank"
           rel="noreferrer"
+          className="mr-8"
         >
-          <Instagram className="mr-8" />
+          <Instagram />
         </Link>
         <Link
           href="https://www.youtube.com/c/UnionChurchcl"

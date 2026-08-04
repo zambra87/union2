@@ -70,13 +70,13 @@ export function MinistryPage({ data }: MinistryPageProps) {
               <div className="flex flex-wrap gap-4">
                 {data.sidebar.leaders.people.map((person, index) => (
                   <div key={index} className="text-center">
-                    <div className="relative w-20 h-20 rounded-full overflow-hidden mb-2">
+                    <div className="relative w-[104px] h-[104px] rounded-full overflow-hidden mb-2">
                       <Image
                         src={person.image}
                         alt={person.name}
                         fill
                         className="object-cover"
-                        sizes="80px"
+                        sizes="104px"
                         unoptimized
                       />
                     </div>

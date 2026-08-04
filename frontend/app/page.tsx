@@ -12,8 +12,9 @@ export default async function Home() {
   return (
     <>
       <Cover />
+      <div className="relative z-10 bg-white -mt-10 md:-mt-16 pt-10 md:pt-16">
       <div className="container mx-auto mb-20 md:mb-40 px-8 sm:px-8">
-        <div className="mt-20 flex justify-center items-center flex-col md:flex-row text-center md:text-left">
+        <div className="flex justify-center items-center flex-col md:flex-row text-center md:text-left">
           <div className="mb-12 md:mb-0">
             <Image
               src={horaciopatty}
@@ -51,13 +52,13 @@ export default async function Home() {
         </div>
       </div>
 
-      <p className="text-lg font-sans sm:text-xl md:text-2xl text-gray-800 mb-2 text-center">
+      <p className="text-center font-serif text-2xl md:text-3xl lg:text-4xl text-gray-800 mb-4 font-">
         Conoce nuestros ministerios
       </p>
 
       <MinisteriosGrid />
 
-      <div className="px-8 sm:px-0 bg-pink-light" style={{ zIndex: '-1' }}>
+      <div className="px-8 sm:px-0 bg-pink-light">
         <div className="relative">
           <div className="container mx-auto mt-40 flex items-center">
             <div className="py-12 md:py-0">
@@ -143,6 +144,7 @@ export default async function Home() {
           </div>
           <Newsletter />
         </div>
+      </div>
       </div>
     </>
   );

@@ -2,93 +2,62 @@
 
 import { useLive } from '@/app/contexts/LiveContext';
 import { YouTubePlayer } from './YouTubePlayer';
-import Image from 'next/image';
-import cover from '@/public/images/cover.jpg';
 import { Header } from './Header';
 import { Facebook, Instagram, Youtube } from './icons';
 
-type CoverContentProps = {
-  isLive: boolean;
-  videoId: string | null;
-  isLoading: boolean;
-};
-
-function CoverContent({ isLive, videoId, isLoading }: CoverContentProps) {
-  if (isLoading) {
-    return (
-      <div className="container mx-auto aspect-video bg-gray-200 animate-pulse rounded-2xl flex justify-center items-center">
-        <p className="text-center text-2xl font-bold">Cargando...</p>
-      </div>
-    );
-  }
-  if (isLive && videoId) {
-    return (
-      <div className="container mx-auto px-8 md:px-0">
-        <YouTubePlayer
-          className="h-full w-full aspect-video overflow-hidden rounded-2xl"
-          videoId={videoId}
-        />
-      </div>
-    );
-  }
-
+function CoverHeroText() {
   return (
-    <>
-      <Image
-        className="absolute object-cover w-full h-full"
-        alt="Cover"
-        src={cover}
-        placeholder="blur"
-      />
-      <div className="h-full flex justify-center items-center relative">
-        <div>
-          <p className="text-center font-semibold drop-shadow-lg text-white font-sans text-5xl mt-75 mb-2 md:text-6xl lg:text-7xl">
-            Union Church
-          </p>
-          <p className="text-center text-white drop-shadow-lg font-serif text-3xl mb-5 md:text-2xl lg:text-3xl">
-            Bienvenido a Casa
-          </p>
-          <div className="flex justify-center">
-            <a
-              href="https://www.facebook.com/unionchurch.cl"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Facebook className="mr-8" />
-            </a>
-            <a
-              href="https://www.instagram.com/unionchurch.cl/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Instagram className="mr-8" />
-            </a>
-            <a
-              href="https://www.youtube.com/c/UnionChurchcl"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Youtube />
-            </a>
-          </div>
-        </div>
-      </div>
-    </>
+    <div>
+      <p className="text-center font-semibold drop-shadow-lg text-white font-sans text-5xl mb-2 md:text-6xl lg:text-7xl">
+        Union Church
+      </p>
+      <p className="text-center text-white drop-shadow-lg font-serif text-3xl mb-5 md:text-2xl lg:text-3xl">
+        Bienvenido a Casa
+      </p>
+    </div>
   );
 }
 
 export function Cover() {
   const { isLive, videoId, isLoading } = useLive();
 
-  const containerClass =
-    isLive || isLoading || videoId
-      ? 'h-auto pt-40 pb-16 lg:h-screen w-full flex justify-center items-center bg-gray'
-      : 'h-screen';
+  if (isLoading) {
+    return (
+      <div className="h-auto w-full bg-gray pt-40 pb-16 lg:h-screen flex flex-col">
+        <Header />
+        <div className="container mx-auto aspect-video flex-1 bg-gray-200 animate-pulse rounded-2xl flex justify-center items-center">
+          <p className="text-center text-2xl font-bold">Cargando...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (isLive && videoId) {
+    return (
+      <div className="h-auto w-full bg-gray pt-40 pb-16 lg:h-screen flex flex-col">
+        <Header />
+        <div className="container mx-auto px-8 md:px-0 flex-1 flex items-center">
+          <YouTubePlayer
+            className="h-full w-full aspect-video overflow-hidden rounded-2xl"
+            videoId={videoId}
+          />
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className={containerClass}>
-      <Header />
-      <CoverContent isLive={isLive} videoId={videoId} isLoading={isLoading} />
+    <div className="relative h-screen overflow-hidden">
+      <div
+        className="absolute inset-0 bg-cover bg-top bg-no-repeat bg-fixed"
+        style={{ backgroundImage: "url('/images/cover.jpg')" }}
+      />
+      <div className="relative z-[1] flex h-full flex-col">
+        <Header />
+        <div className="flex flex-1 items-center justify-center px-8">
+          <CoverHeroText />
+        </div>
+      </div>
     </div>
   );
 }
