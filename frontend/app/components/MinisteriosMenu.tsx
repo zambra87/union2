@@ -101,7 +101,7 @@ export function MinisteriosMenu({ linkClass, variant }: MinisteriosMenuProps) {
 
       {open && (
         <ul
-          className={`absolute right-0 md:left-0 md:right-auto top-full mt-2 min-w-[200px] rounded-md border py-2 z-50 ${dropdownClass}`}
+          className={`absolute left-1/2 top-full z-50 mt-2 min-w-[200px] max-w-[calc(100vw-2rem)] -translate-x-1/2 rounded-md border py-2 md:left-0 md:translate-x-0 md:max-w-none ${dropdownClass}`}
           role="menu"
         >
           {ministerios.map((ministerio) => {
