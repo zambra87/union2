@@ -3,7 +3,6 @@
 import { useLive } from '@/app/contexts/LiveContext';
 import { YouTubePlayer } from './YouTubePlayer';
 import { Header } from './Header';
-import { Facebook, Instagram, Youtube } from './icons';
 
 function CoverHeroText() {
   return (
