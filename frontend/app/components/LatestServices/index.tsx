@@ -60,7 +60,7 @@ export async function LatestServices() {
   }
 
   return (
-    <div className="flex justify-between text-left pb-16 space-x-4 md:space-x-8 overflow-x-scroll scrollbar-none">
+    <div className="flex justify-between text-left pb-4 md:pb-16 space-x-4 md:space-x-8 overflow-x-scroll scrollbar-none">
       {videos.map(
         ({
           videoId,

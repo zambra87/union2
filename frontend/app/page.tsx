@@ -83,8 +83,8 @@ export default async function Home() {
         </div>
 
         <div className="px-8 sm:px-0">
-          <div className="container mx-auto text-center relative pb-20 md:pb-40 pt-10">
-            <div className="flex items-center justify-between py-16">
+          <div className="container mx-auto text-center relative pb-4 md:pb-40 pt-10">
+            <div className="flex items-center justify-between py-4 md:py-16">
               <p className="font-serif text-2xl md:text-3xl lg:text-4xl text-gray-800">
                 Últimos servicios
               </p>
@@ -96,10 +96,10 @@ export default async function Home() {
                 Ver todos
               </a>
             </div>
-            <div className="flex flex-wrap flex-col sm:flex-row justify-between text-left pb-16 md:space-x-8">
+            <div className="flex flex-wrap flex-col sm:flex-row justify-between text-left md:space-x-8">
               <LatestServices />
             </div>
-            <div className="flex items-center justify-between py-16">
+            <div className="flex items-center justify-between py-4 md:py-16">
               <p className="font-serif text-2xl md:text-3xl lg:text-4xl text-gray-800">
                 Escritorio del pastor
               </p>
@@ -116,8 +116,8 @@ export default async function Home() {
             </div>
           </div>
         </div>
-        <div className="px-8 sm:px-0 pt-10 bg-pink-light">
-          <div className="container mx-auto text-center pb-20 md:pb-40 pt-20 md:w-5/12">
+        <div className="px-8 sm:px-0 pt-4 md:pt-10 bg-pink-light">
+          <div className="container mx-auto text-center pb-20 md:pb-40 pt-8 md:pt-20 md:w-5/12">
             <p className="text-gray-300 text-9xl font-serif leading-3">“</p>
             <p className="font-bold text-xl sm:text-2xl md:text-3xl mb-12">
               Transformar la ciudad, influenciar al mundo, ayudar a las personas
