@@ -33,6 +33,7 @@ jest.mock('../../../lib/mailchimp/config', () => ({
     server: 'us12',
   },
   initializeMailchimp: jest.fn(),
+  getMissingMailchimpEnvVars: jest.fn().mockReturnValue([]),
 }));
 
 import { POST } from './route';
@@ -134,12 +135,12 @@ describe('Newsletter API', () => {
   });
 
   it('email is already subscribed', async () => {
-    const consoleSpy = jest.spyOn(console, 'error').mockImplementation();
     (mailchimp.lists.addListMember as jest.Mock).mockRejectedValue({
       response: {
         body: {
           title: 'Member Exists',
         },
+        status: 400,
       },
     });
     const request = new NextRequest('http://localhost:3000/api/newsletter', {
@@ -158,21 +159,6 @@ describe('Newsletter API', () => {
     expect(data.message).toBe(
       'Este email ya está suscrito a nuestro newsletter'
     );
-
-    // Verify console.error was called with the correct error
-    expect(consoleSpy).toHaveBeenCalledWith(
-      'Newsletter subscription error:',
-      expect.objectContaining({
-        response: {
-          body: {
-            title: 'Member Exists',
-          },
-        },
-      })
-    );
-
-    // Restore console.error
-    consoleSpy.mockRestore();
   });
 
   it('rate limit exceeded', async () => {

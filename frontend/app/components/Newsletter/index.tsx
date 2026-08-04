@@ -51,7 +51,15 @@ export default function Newsletter() {
           body: JSON.stringify({ firstname, lastname, email }),
         });
         const responseText = await response.text();
-        const data = JSON.parse(responseText);
+        let data: { message?: string } = {};
+
+        if (responseText) {
+          try {
+            data = JSON.parse(responseText);
+          } catch {
+            data = {};
+          }
+        }
 
         if (!response.ok) {
           dispatch({

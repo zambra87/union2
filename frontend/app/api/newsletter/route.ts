@@ -1,64 +1,66 @@
-// Add this at the top of your file, before any mailchimp calls
-if (process.env.NODE_ENV === 'development') {
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-}
-
 import { NextRequest, NextResponse } from 'next/server';
 import mailchimp from '@mailchimp/mailchimp_marketing';
 import { validateInput } from '@/lib/forms/newsletter/validators';
-import { initializeMailchimp, mailchimpConfig } from '@/lib/mailchimp/config';
+import {
+  getMissingMailchimpEnvVars,
+  initializeMailchimp,
+  mailchimpConfig,
+} from '@/lib/mailchimp/config';
 import { rateLimit } from '@/lib/rate-limit';
 import { MailchimpErrorResponse } from '@/lib/mailchimp/types';
 
-initializeMailchimp();
+function isMailchimpError(error: unknown): error is MailchimpErrorResponse {
+  return (
+    typeof error === 'object' &&
+    error !== null &&
+    'response' in error &&
+    typeof (error as MailchimpErrorResponse).response?.body?.title === 'string'
+  );
+}
 
-// Validate all environment variables at once
-const validateConfig = () => {
-  const missingVars = Object.entries(mailchimpConfig)
-    .filter(([, value]) => !value)
-    .map(([key]) => key);
+const handleSubscriptionError = (error: unknown) => {
+  if (isMailchimpError(error)) {
+    const { title } = error.response.body;
 
-  if (missingVars.length > 0) {
-    throw new Error(
-      `Missing required environment variables: ${missingVars.join(', ')}`
-    );
-  }
-};
+    if (title === 'Member Exists') {
+      return NextResponse.json(
+        { message: 'Este email ya está suscrito a nuestro newsletter' },
+        { status: 400 }
+      );
+    }
 
-validateConfig();
+    if (error.response.status === 401) {
+      console.error('Mailchimp API authentication error');
+      return NextResponse.json(
+        { message: 'Error de configuración del servidor' },
+        { status: 500 }
+      );
+    }
 
-const handleMailchimpError = (error: MailchimpErrorResponse) => {
-  // Handle specific Mailchimp error cases
-  if (error.response.body.title === 'Member Exists') {
+    if (title === 'Resource Not Found') {
+      console.error('Mailchimp list not found');
+      return NextResponse.json(
+        { message: 'No existe la lista de correo' },
+        { status: 500 }
+      );
+    }
+
+    if (error.response.status >= 500) {
+      console.error('Mailchimp server error:', error.response.body);
+      return NextResponse.json(
+        { message: 'El servicio no está disponible en este momento' },
+        { status: 503 }
+      );
+    }
+
+    console.error('Mailchimp subscription error:', error.response.body);
+  } else if (error instanceof Error && error.name === 'AbortError') {
     return NextResponse.json(
-      { message: 'Este email ya está suscrito a nuestro newsletter' },
-      { status: 400 }
+      { message: 'El servicio tardó demasiado en responder. Inténtalo de nuevo.' },
+      { status: 504 }
     );
-  }
-
-  // Authentication error
-  if (error.response?.status === 401) {
-    console.error('Mailchimp API authentication error');
-    return NextResponse.json(
-      { message: 'Error de configuración del servidor' },
-      { status: 500 }
-    );
-  }
-  // List not found
-  if (error.response.body.title === 'Resource Not Found') {
-    console.error('Mailchimp list not found');
-    return NextResponse.json(
-      { message: 'No existe la lista de correo' },
-      { status: 500 }
-    );
-  }
-  // Server errors
-  if (error.response?.status >= 500) {
-    console.error('Mailchimp server error:', error.response.body);
-    return NextResponse.json(
-      { message: 'El servicio no está disponible en este momento' },
-      { status: 503 }
-    );
+  } else {
+    console.error('Newsletter subscription error:', error);
   }
 
   return NextResponse.json(
@@ -72,6 +74,20 @@ export async function POST(request: NextRequest) {
   const timeoutId = setTimeout(() => controller.abort(), 5000);
 
   try {
+    const missingVars = getMissingMailchimpEnvVars();
+    if (missingVars.length > 0) {
+      console.error(
+        'Missing newsletter environment variables:',
+        missingVars.join(', ')
+      );
+      return NextResponse.json(
+        { message: 'Error de configuración del servidor' },
+        { status: 500 }
+      );
+    }
+
+    initializeMailchimp();
+
     const rateLimitResult = await rateLimit(request);
     if (rateLimitResult) return rateLimitResult;
 
@@ -82,6 +98,7 @@ export async function POST(request: NextRequest) {
         { status: 413 }
       );
     }
+
     const body = await request.json();
     const validation = validateInput(body);
     if (!validation.isValid) {
@@ -107,9 +124,7 @@ export async function POST(request: NextRequest) {
       { status: 201 }
     );
   } catch (error) {
-    console.error('Newsletter subscription error:', error);
-
-    return handleMailchimpError(error as MailchimpErrorResponse);
+    return handleSubscriptionError(error);
   } finally {
     clearTimeout(timeoutId);
   }
