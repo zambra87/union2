@@ -82,7 +82,7 @@ export default async function Home() {
           </div>
         </div>
 
-        <div className="px-8 sm:px-0">
+        <div id="ultimos-servicios" className="px-8 sm:px-0 scroll-mt-24">
           <div className="container mx-auto text-center relative pb-4 md:pb-40 pt-10">
             <div className="flex items-center justify-between py-4 md:py-16">
               <p className="font-serif text-2xl md:text-3xl lg:text-4xl text-gray-800">
@@ -99,7 +99,10 @@ export default async function Home() {
             <div className="flex flex-wrap flex-col sm:flex-row justify-between text-left md:space-x-8">
               <LatestServices />
             </div>
-            <div className="flex items-center justify-between py-4 md:py-16">
+            <div
+              id="escritorio-del-pastor"
+              className="flex items-center justify-between py-4 md:py-16 scroll-mt-24"
+            >
               <p className="font-serif text-2xl md:text-3xl lg:text-4xl text-gray-800">
                 Escritorio del pastor
               </p>

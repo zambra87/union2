@@ -98,7 +98,7 @@ export function Footer() {
           <Youtube />
         </Link>
       </div>
-      <p className="text-white text-center mb-8">© Union Church 2025</p>
+      <p className="text-white text-center mb-8">© Union Church 2026</p>
       <FooterIllo className="w-full bg-peach" />
     </div>
   );

@@ -85,10 +85,7 @@ export function Header({ variant = 'white' }: HeaderProps) {
             </svg>
             <span>Dar</span>
           </Link>
-          <a
-            href="https://www.youtube.com/watch?v=FPj6ImgwN3k&list=PLV_Ax0JpimXPgTVH7fvCVC-2X0XQ6vorg"
-            className={linkClass}
-          >
+          <Link href="/#escritorio-del-pastor" className={linkClass}>
             <svg
               width="100%"
               height="100%"
@@ -113,11 +110,8 @@ export function Header({ variant = 'white' }: HeaderProps) {
               />
             </svg>
             <span>Escritorio</span>
-          </a>
-          <a
-            href="https://www.youtube.com/watch?v=jgr2c_Tob7I&list=PLV_Ax0JpimXPtD-QDqcygoAwERU0rvU82"
-            className={linkClass}
-          >
+          </Link>
+          <Link href="/#ultimos-servicios" className={linkClass}>
             <svg
               width="100%"
               height="100%"
@@ -142,7 +136,7 @@ export function Header({ variant = 'white' }: HeaderProps) {
               />
             </svg>
             <span>Servicios</span>
-          </a>
+          </Link>
         </div>
       </nav>
     </div>
